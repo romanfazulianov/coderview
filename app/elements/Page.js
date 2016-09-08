@@ -11,6 +11,9 @@ import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
 import appBarStyles from '../inlineStyles/appBar';
 
+
+import FontIcon from 'material-ui/FontIcon';
+import {red400} from 'material-ui/styles/colors';
 // import Header from '';
 // import Content from '';
 // import Footer from '';
@@ -26,12 +29,17 @@ export default class Page extends React.Component {
                     titleStyle={appBarStyles.title}
                     style={appBarStyles.main}
                     showMenuIconButton={false}>
-                    Фазульянов Роман
+                    <span>Роман Фазульянов</span>
                 {/*iconClassNameRight="muidocs-icon-navigation-expand-more">*/}
+                <div>
                     <Avatar src={this.props.avatar} />
+                </div>
                 </AppBar>
 
-            <div className="page-body" />
+            <div className="page-body">
+                <FontIcon className="material-icons" color={red400}>warning</FontIcon>
+                <h1>Сайт на реконструкции</h1>
+            </div>
         </div>;
     }
 }

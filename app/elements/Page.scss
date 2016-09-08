@@ -10,7 +10,7 @@ html, body, #app {
 
 
 .main-page {
-  //background: #ee7733;
+  background: rgb(48,48,48);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -22,8 +22,21 @@ html, body, #app {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
+    * {
+      flex-basis: 300px;
+      color: rgb(48,48,48);
+    }
   }
   & .page-body{
-    align-self: stretch;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    //justify-content:center;
+    align-items: center;
+    
+    h1 {
+      color: rgb(239, 83, 80);
+    }
   }
 }
