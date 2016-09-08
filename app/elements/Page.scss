@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+html, body, #app {
+  height: 100%;
+}
+
+
+.main-page {
+  //background: #ee7733;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  justify-content: flex-start;
+  & .header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+  & .page-body{
+    align-self: stretch;
+  }
+}

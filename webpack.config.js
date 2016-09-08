@@ -1,9 +1,9 @@
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: './app/App.js',
     output: {
-        filename: 'public/bundle.js'
+        filename: 'dist/bundle.js'
     },
     module: {
         loaders: [
@@ -15,6 +15,10 @@ module.exports = {
                     presets: ['react', 'es2015']
                 }
             },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('css!sass')
+            }
         ]
     },
     plugins: [
@@ -28,6 +32,9 @@ module.exports = {
             //   baseDir: ['./public'],
             //   index: 'index.html'
             // }
+        }),
+        new ExtractTextPlugin('dist/styles/main.css', {
+            allChunks: true
         })
     ]
 };

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{coderview/node_modules}" />
-    <file url="PROJECT" libraries="{Node.js, node_modules}" />
+    <file url="PROJECT" libraries="{node_modules}" />
     <includedPredefinedLibrary name="ECMAScript 6" />
+    <includedPredefinedLibrary name="Node.js Core" />
     <includedPredefinedLibrary name="coderview/node_modules" />
   </component>
 </project>
