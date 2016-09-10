@@ -28,12 +28,13 @@ export default class Page extends React.Component {
                     title="CoderView"
                     titleStyle={appBarStyles.title}
                     style={appBarStyles.main}
-                    showMenuIconButton={false}>
-                    <span>Роман Фазульянов</span>
-                {/*iconClassNameRight="muidocs-icon-navigation-expand-more">*/}
-                <div>
-                    <Avatar src={this.props.avatar} />
-                </div>
+                    showMenuIconButton={false}
+                >
+                    <span className="header__naming">Роман Фазульянов</span>
+                    {/*iconClassNameRight="muidocs-icon-navigation-expand-more">*/}
+                    <div>
+                        <Avatar src={this.props.avatar} className="header__avatar"/>
+                    </div>
                 </AppBar>
 
             <div className="page-body">

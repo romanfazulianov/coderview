@@ -41,6 +41,7 @@
         "react/prop-types": "warn",
         "no-console": "warn",
         "no-unused-vars": "warn",
+        "no-undef": "off",
         "strict": "off"
     }
 }

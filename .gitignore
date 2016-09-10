@@ -3,3 +3,5 @@ bundle.js
 bundle.min.js
 node_modules
 *.css
+*.gz
+npm-debug.log
