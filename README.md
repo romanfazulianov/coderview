@@ -1,7 +1,8 @@
 #My CoderView Site
 
     git clone https://github.com/romanfazulianov/coderview.git
-    npm install
+    npm i -g concurrently webpack
+    npm i
 
 then for futher development:
 
@@ -10,3 +11,7 @@ then for futher development:
 or for production
 
     npm run prod
+
+build ui
+
+    npm run build
