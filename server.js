@@ -4,8 +4,8 @@ const app = express();
 const path = require("path");
 const port = 3100;
 const address = `http://localhost:${port}/`;
-const staticGzip = require('static-gzip');
-app.use(staticGzip("dist"));
+
+app.use(express.static("dist"));
 
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "dist/index.html"));
