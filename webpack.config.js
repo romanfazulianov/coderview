@@ -11,7 +11,7 @@ const config = {
 
     entry: [
         'babel-polyfill',
-        './app/App.js'
+        './app/react/App.js'
     ],
     output: {
         filename: 'dist/bundle.js'

@@ -20,7 +20,7 @@ import {red400} from 'material-ui/styles/colors';
 
 export default class Page extends React.Component {
     componentDidMount() {
-
+        console.log(document);
     }
     render () {
         return <div className="main-page">
