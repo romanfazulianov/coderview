@@ -3,44 +3,38 @@
  */
 
 import React from "react";
-import ReactDom from "react-dom";
-
+import {connect} from "react-redux";
 import './Page.scss';
 
-import AppBar from 'material-ui/AppBar';
-import Avatar from 'material-ui/Avatar';
-import appBarStyles from '../inlineStyles/appBar';
+import TestingWithPerf from './TestingWithPerf';
 
 
-import FontIcon from 'material-ui/FontIcon';
-import {red400} from 'material-ui/styles/colors';
-// import Header from '';
-// import Content from '';
-// import Footer from '';
+/**
+ * @param {RootState} state
+ * @returns {PageProps}
+ */
+const mapStateToProps = (state) => {
+    let props = new PageProps();
+    props.testNum = state.page.testNum;
+};
 
+@connect(mapStateToProps)
 export default class Page extends React.Component {
-    componentDidMount() {
-        console.log(document);
-    }
-    render () {
-        return <div className="main-page">
-                <AppBar className="header" ref={(ref) => {this.appBarEl = ReactDom.findDOMNode(ref)}}
-                    title="CoderView"
-                    titleStyle={appBarStyles.title}
-                    style={appBarStyles.main}
-                    showMenuIconButton={false}
-                >
-                    <span className="header__naming">Роман Фазульянов</span>
-                    {/*iconClassNameRight="muidocs-icon-navigation-expand-more">*/}
-                    <div>
-                        <Avatar src={this.props.avatar} className="header__avatar"/>
-                    </div>
-                </AppBar>
+    /** @type {PageProps} */
+    props;
+    static defaultProps = new PageProps();
+    static propTypes = {
+        dispatch: React.PropTypes.func,
+        testNum: React.PropTypes.number
+    };
 
-            <div className="page-body">
-                <FontIcon className="material-icons" color={red400}>warning</FontIcon>
-                <h1>Сайт на реконструкции</h1>
-            </div>
-        </div>;
+    render () {
+        return <TestingWithPerf testNum={this.props.testNum} count={30} ammount={1000}/>;
     }
+}
+class PageProps {
+    /** @type {number} */
+    testNum = 0;
+    /** @type {function} */
+    dispatch = () => {};
 }

@@ -3,10 +3,13 @@
  */
 import { combineReducers } from 'redux';
 
-class RootReducer {
+import PageReducer from './PageReducer';
 
+class RootState {
+    /** @type {PageState} */
+    page = /** @type {PageState} */PageReducer;
 }
 
-const rootReducer = combineReducers(new RootReducer());
+const rootReducer = combineReducers(new RootState());
 
-export default rootReducer
+export default rootReducer;
