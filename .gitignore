@@ -6,3 +6,4 @@ node_modules
 *.gz
 npm-debug.log
 .idea
+.idea/**/*
