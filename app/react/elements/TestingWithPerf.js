@@ -10,6 +10,9 @@ import TestUnit2 from './TestUnit2';
 import TestUnit3 from './TestUnit3';
 import TestUnit4 from './TestUnit4';
 
+import Perf from 'react-addons-perf';
+import * as actions from '../actions/TestPerf';
+
 
 export default class TestingWithPerf extends React.Component {
     /** @type {TestingWithPerfProps} */
@@ -21,18 +24,24 @@ export default class TestingWithPerf extends React.Component {
         testUnitAmount: React.PropTypes.number
     };
 
-    state;
-
-    componentDidMount() {
-
+    startMeasurement = (name) => {
+        console.log(`test ${this.props.testNum} : ${name} is started;`);
+        Perf.start();
     };
 
-    testRunner = () => {
+    endMeasurement = (name) => {
+        Perf.stop();
+        let measurements = Perf.getLastMeasurements();
+        console.log(`test ${this.props.testNum} : ${name} is ended;`);
+        console.dir(measurements);
+        Perf.printInclusive(measurements);
+        Perf.printExclusive(measurements);
+        Perf.printWasted(measurements);
+        this.props.dispatch(actions.incrementTestNum());
+    };
 
-    };
-    startMeasurement = () => {
-    };
-    endMeasurement = () => {
+    startTesting = () => {
+        this.props.dispatch(actions.setTestNumToZero());
     };
 
     render() {
@@ -53,16 +62,18 @@ export default class TestingWithPerf extends React.Component {
                 return <Test count={testTimes} ammount={testUnitAmount} testUnit={TestUnit4} testStarted={this.startMeasurement}
                              testFinished={this.endMeasurement}/>;
             default:
-                return null;
+                return <input type="button" name="Start tests" onClick={this.startTesting}/> ;
         }
     }
 }
 
 class TestingWithPerfProps {
+    /** @type {?number} */
+    testNum = null;
     /** @type {number} */
-    testNum = 0;
+    testTimes = 1;
     /** @type {number} */
-    testTimes = 30;
-    /** @type {number} */
-    testUnitAmount = 1000;
+    testUnitAmount = 100;
+    /** @type {function} */
+    dispatch = () => {};
 }

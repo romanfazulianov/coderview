@@ -29,11 +29,11 @@ export default class Page extends React.Component {
     };
 
     render () {
-        return <TestingWithPerf testNum={this.props.testNum} count={30} ammount={1000}/>;
+        return <TestingWithPerf {...this.props} count={30} ammount={1000}/>;
     }
 }
 class PageProps {
-    /** @type {number} */
+    /** @type {?number} */
     testNum = 0;
     /** @type {function} */
     dispatch = () => {};

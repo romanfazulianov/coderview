@@ -5,8 +5,9 @@
 import * as actionTypes from '../constants/actionTypes';
 
 class PageState {
-    /** @type {number} */
-    testNum = 0;
+    /** @type {?number} */
+
+     = null;
 }
 
 export default function (state = new PageState(), action = null) {
