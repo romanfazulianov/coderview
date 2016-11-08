@@ -37,6 +37,7 @@ export default class TestingWithPerf extends React.Component {
         Perf.printInclusive(measurements);
         Perf.printExclusive(measurements);
         Perf.printWasted(measurements);
+        Perf.printOperations(measurements);
         this.props.dispatch(actions.incrementTestNum());
     };
 
