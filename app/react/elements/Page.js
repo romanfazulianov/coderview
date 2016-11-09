@@ -9,13 +9,25 @@ import './Page.scss';
 import TestingWithPerf from './TestingWithPerf';
 
 
+class PageProps {
+    /** @type {?number} */
+    testNum = null;
+    /** @type {object[]} */
+    results = [];
+    /** @type {function} */
+    dispatch = () => {};
+}
+
 /**
  * @param {RootState} state
  * @returns {PageProps}
  */
 const mapStateToProps = (state) => {
-    let props = new PageProps();
+    let props = Object.assign({}, new PageProps());
     props.testNum = state.page.testNum;
+    props.results = state.page.results;
+    props.cleared = state.page.cleared;
+    return props;
 };
 
 @connect(mapStateToProps)
@@ -31,10 +43,4 @@ export default class Page extends React.Component {
     render () {
         return <TestingWithPerf {...this.props} count={30} ammount={1000}/>;
     }
-}
-class PageProps {
-    /** @type {?number} */
-    testNum = 0;
-    /** @type {function} */
-    dispatch = () => {};
 }

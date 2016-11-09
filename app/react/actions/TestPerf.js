@@ -4,14 +4,21 @@
 
 import * as actionTypes from '../constants/actionTypes';
 
-export function incrementTestNum() {
+export function clearTestResultsBeforeRun() {
     return {
-        type: actionTypes.incrementTestNum
+        type: actionTypes.clearTestResultsBeforeRun
     };
 }
 
-export function setTestNumToZero() {
+export function updateTestResultsAfterRun(result) {
     return {
-        type: actionTypes.setTestNumToZero
+        type: actionTypes.updateTestResultsAfterRun,
+        payload: result
+    };
+}
+
+export  function cleared() {
+    return {
+        type: actionTypes.cleared
     };
 }

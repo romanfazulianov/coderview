@@ -15,18 +15,11 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
 const store = configureStore();
 
 ReactDOM.render(
-    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <Provider store={store}>
-            <Page avatar={"assets/avatar.jpg"}/>
-        </Provider>
-    </MuiThemeProvider>,
+            <Page/>
+        </Provider>,
     document.getElementById("app")
 );

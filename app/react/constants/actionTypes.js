@@ -2,5 +2,6 @@
  * Created by fazdev on 08.11.16.
  */
 
-export const setTestNumToZero = {};
-export const incrementTestNum = {};
+export const clearTestResultsBeforeRun = {};
+export const updateTestResultsAfterRun = {};
+export const cleared = {};

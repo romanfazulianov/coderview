@@ -23,7 +23,7 @@ const config = {
                 exclude: /node_modules/,
                 loader: 'babel',
                 query: {
-                    plugins: ['transform-runtime'],
+                    plugins: ['transform-runtime', 'transform-decorators-legacy'],
                     presets: ['react', 'es2015', 'stage-0']
                 }
             },
