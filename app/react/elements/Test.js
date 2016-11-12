@@ -12,10 +12,16 @@ class TestProps {
     amount = 100;
     /** @type {TestUnit.<testName>} */
     TestUnit = TestUnit;
+    /** @type {?number} */
+    testNumInRun = null;
+    /** @type {?number} */
+    testNum = null;
     /** @type {function} */
     testStarted = () => {};
     /** @type {function} */
     testFinished = () => {};
+    /** @type {function} */
+    runTest = () => {};
 }
 
 class TestState {
@@ -35,48 +41,55 @@ export default class Test extends React.Component {
         this.state = new TestState();
     }
     
-    componentDidMount() {
-        console.log('1');
-        let props = this.props;
-        /** @type {TestState} */
-        let state = new TestState;
-        props.testStarted(props.TestUnit.testName);
-        this.startNewRun(state);
-    }
-    
     componentDidUpdate() {
         let props = this.props;
         let state = this.state;
-        if (state.count === props.count) {
-           return props.testFinished(props.TestUnit.testName);
+        if(props.testNumInRun === props.testNum) {
+            if (state.testUnits.length === 0) {//начало
+                /** @type {TestState} */
+                props.testStarted(props.TestUnit.testName);
+                this.startNewRun(state);
+            } else {
+                //Продолжение
+                if (state.count !== props.count) {
+                    return this.startNewRun(state);
+                }
+                props.testFinished(props.TestUnit.testName);//конец
+            }
+        } else if (state.testUnits.length > 0) {
+            this.setState(new TestState());
         }
-        this.startNewRun(state);
-        this.forceUpdate();
     }
     
     render() {
-        console.log('render', this.state.count);
         return <div>
+            {/* Flat button with ripple */}
+            <button onClick={this.runTest} className="mdl-button mdl-js-button mdl-js-ripple-effect">
+                Начать {this.props.TestUnit.testName}
+            </button>
             {this.state.testUnits}
         </div>;
     }
-
-    componentWillUnmout() {
-        console.info("!!!!!!!!!!!!!!!!!!!");
+    runTest = () => {
+        this.props.runTest(this.props.testNum);
     }
+
     /** @param {TestState} oldState*/
     startNewRun = (oldState) => {
         let props = this.props;
-        /** @type {TestState} */
-        let state = /** @type {TestState} */{};
         let amount = props.amount;
         let TestUnit = props.TestUnit;
         let testUnits = [];
+        let count = oldState.count + 1;
         for (let i = 0; i < amount; i++) {
-            testUnits.push(<TestUnit key={i} />);
+            testUnits.push(<TestUnit key={i} time={Date.now()}/>);
         }
+        /** @type {TestState} */
+        let state = /** @type {TestState} */{};
+        state.count = count;
         state.testUnits = testUnits;
-        state.count = oldState.count + 1;
-        this.setState(state);
+        setTimeout(() => {
+            this.setState(state);//дадим браузеру отрисовывать изменения
+        }, 0);
     }
 }

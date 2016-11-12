@@ -25,8 +25,8 @@ class PageProps {
 const mapStateToProps = (state) => {
     let props = Object.assign({}, new PageProps());
     props.testNum = state.page.testNum;
-    props.results = state.page.results;
-    props.cleared = state.page.cleared;
+    // props.results = state.page.results;
+    // props.cleared = state.page.cleared;
     return props;
 };
 
@@ -41,6 +41,7 @@ export default class Page extends React.Component {
     };
 
     render () {
-        return <TestingWithPerf {...this.props} count={30} ammount={1000}/>;
+        console.log('parent render');
+        return <TestingWithPerf {...this.props} testTimes={100} testUnitAmount={1000}/>;
     }
 }

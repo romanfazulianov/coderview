@@ -6,13 +6,13 @@ import TestUnitProps from './TestUnitProps';
 
 
 export default class TestUnit2 extends React.Component {
-    static testName = "bad example2: render + render bind";
+    static testName = "bad example: render + render bind";
     props;
     static defaultProps = new TestUnitProps();
     render() {
         let logger = function() {
-            console.log(this.constructor.testName, this.props.key);
+            console.log(this.constructor.testName, this.props.time);
         };
-        return <span {...this.props} onClick={logger.bind(this)}>.</span>;
+        return <span onClick={logger.bind(this)} onBlur={logger.bind(this)} onFocus={logger.bind(this)} tabIndex="0">{this.props.time}</span>;
     }
 }

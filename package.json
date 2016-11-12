@@ -1,28 +1,24 @@
 {
-  "name": "coderview",
+  "name": "react-factory",
   "version": "0.0.1",
-  "repository": "https://github.com/romanfazulianov/coderview.git",
-  "description": "coderview-reimpletation",
+  "repository": "http://gitlab.simbirsoft/api-factory/react-factory.git",
+  "description": "react-factory",
   "main": "server.js",
   "dependencies": {
-    "axios": "^0.9.1",
     "express": "^4.13.4",
-    "firebase": "^2.4.2",
-    "material-ui": "^0.15.4",
-    "re-base": "^1.5.1",
+    "material-design-lite": "^1.2.1",
     "react": "^15.3.1",
-    "react-addons-perf": "^15.3.2",
     "react-dom": "^15.3.1",
     "react-prop-types": "^0.4.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
     "react-tap-event-plugin": "^1.0.0",
-    "reactfire": "^0.6.0",
     "redux": "^3.6.0",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
+    "react-addons-perf": "^15.3.2",
     "babel-core": "^6.7.6",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
@@ -55,7 +51,7 @@
   },
   "keywords": [
     "react",
-    "coderview"
+    "factory"
   ],
   "author": "romanfazulianov",
   "license": "ISC"

@@ -15,9 +15,9 @@ export default class TestUnit4 extends React.Component {
         this.logger = this.logger.bind(this);
     }
     logger() {
-        console.log(this.constructor.testName, this.props.key);
+        console.log(this.constructor.testName, this.props.time);
     }
     render() {
-        return <span {...this.props} onClick={this.logger.bind(this)}>.</span>;
+        return <span onClick={this.logger}  onBlur={this.logger} onFocus={this.logger} tabIndex="0">{this.props.time}</span>;
     }
 }

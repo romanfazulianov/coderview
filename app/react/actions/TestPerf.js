@@ -4,21 +4,22 @@
 
 import * as actionTypes from '../constants/actionTypes';
 
-export function clearTestResultsBeforeRun() {
+export function runTest(testNum) {
+    console.log('action');
     return {
-        type: actionTypes.clearTestResultsBeforeRun
+        type: actionTypes.RUN_TEST,
+        payload: testNum
     };
 }
 
-export function updateTestResultsAfterRun(result) {
+export function endTest() {
     return {
-        type: actionTypes.updateTestResultsAfterRun,
-        payload: result
+        type: actionTypes.END_TEST
     };
 }
-
-export  function cleared() {
-    return {
-        type: actionTypes.cleared
-    };
-}
+//
+// export  function cleared() {
+//     return {
+//         type: actionTypes.cleared
+//     };
+// }

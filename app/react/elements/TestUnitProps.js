@@ -4,5 +4,5 @@
 
 export default class TestUnitProps {
     /** @type {number}*/
-    key;
+    time = 0;
 }

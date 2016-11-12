@@ -10,9 +10,9 @@ export default class TestUnit5 extends React.Component {
     props;
     static defaultProps = new TestUnitProps();
     logger = () => {
-        console.log(this.constructor.testName, this.props.key);
+        console.log(this.constructor.testName, this.props.time);
     };
     render() {
-        return <span {...this.props} onClick={this.logger}>.</span>;
+        return <span onClick={this.logger} onBlur={this.logger} onFocus={this.logger} tabIndex="0">{this.props.time}</span>;
     }
 }

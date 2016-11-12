@@ -23,10 +23,6 @@ class TestingWithPerfProps {
     testUnitAmount = 100;
     /** @type {function} */
     dispatch = () => {};
-    /** @type {object[]} */
-    results = [];
-
-    cleared;
 }
 
 export default class TestingWithPerf extends React.Component {
@@ -39,19 +35,9 @@ export default class TestingWithPerf extends React.Component {
         testUnitAmount: React.PropTypes.number
     };
 
-    componentDidUpdate() {
-        if (!this.props.cleared) {
-            this.props.dispatch(actions.cleared());
-        }
-    }
-
     render() {
-        console.log("fdhgh");
         return (
             <div>
-                <div>
-                    {this.renderForm()}
-                </div>
                 <div>
                     {this.renderTest()}
                 </div>
@@ -75,14 +61,8 @@ export default class TestingWithPerf extends React.Component {
         Perf.printInclusive(measurements);
         Perf.printExclusive(measurements);
         Perf.printWasted(measurements);
-        Perf.printOperations(measurements);
         console.log(`test ${this.props.testNum} : ${name} is ended;`);
-        this.props.dispatch(actions.updateTestResultsAfterRun(this.props.results.concat(measurements)));
-    };
-
-    startTesting = () => {
-        console.log('startTesting');
-        this.props.dispatch(actions.clearTestResultsBeforeRun());
+        this.props.dispatch(actions.endTest());
     };
 
     renderTest = () =>{
@@ -90,30 +70,31 @@ export default class TestingWithPerf extends React.Component {
         let testNum = props.testNum;
         let testTimes = props.testTimes;
         let testUnitAmount = props.testUnitAmount;
-            console.log('renderTest', props.cleared && testNum);
-        switch (props.cleared && testNum) {
-            case 0:
-                return <Test count={testTimes} amount={testUnitAmount} TestUnit={TestUnit1} testStarted={this.startMeasurement}
-                             testFinished={this.endMeasurement}/>;
-            case 1:
-                return <Test count={testTimes} amount={testUnitAmount} TestUnit={TestUnit2} testStarted={this.startMeasurement}
-                             testFinished={this.endMeasurement}/>;
-            case 2:
-                return <Test count={testTimes} amount={testUnitAmount} TestUnit={TestUnit3} testStarted={this.startMeasurement}
-                             testFinished={this.endMeasurement}/>;
-            case 3:
-                return <Test count={testTimes} amount={testUnitAmount} TestUnit={TestUnit4} testStarted={this.startMeasurement}
-                             testFinished={this.endMeasurement}/>;
-            case 4:
-                return <Test count={testTimes} amount={testUnitAmount} TestUnit={TestUnit5} testStarted={this.startMeasurement}
-                             testFinished={this.endMeasurement}/>;
-            default:
-                return null;
-        }
+         return (
+            <div>
+                 {/*<Test testNumInRun={testNum} testNum={0} runTest={this.runTest}*/}
+                       {/*count={testTimes} amount={testUnitAmount} TestUnit={TestUnit1} testStarted={this.startMeasurement}*/}
+                       {/*testFinished={this.endMeasurement}/>*/}
+                 {/*<Test testNumInRun={testNum} testNum={1} runTest={this.runTest}*/}
+                       {/*count={testTimes} amount={testUnitAmount} TestUnit={TestUnit2} testStarted={this.startMeasurement}*/}
+                       {/*testFinished={this.endMeasurement}/>*/}
+                 <Test testNumInRun={testNum} testNum={2} runTest={this.runTest}
+                       count={testTimes} amount={testUnitAmount} TestUnit={TestUnit3} testStarted={this.startMeasurement}
+                       testFinished={this.endMeasurement}/>
+                 <Test testNumInRun={testNum} testNum={3} runTest={this.runTest}
+                       count={testTimes} amount={testUnitAmount} TestUnit={TestUnit4} testStarted={this.startMeasurement}
+                       testFinished={this.endMeasurement}/>
+                 <Test testNumInRun={testNum} testNum={4} runTest={this.runTest}
+                       count={testTimes} amount={testUnitAmount} TestUnit={TestUnit5} testStarted={this.startMeasurement}
+                       testFinished={this.endMeasurement}/>
+            </div>
+         );
     };
 
-    renderForm = () => {
-        return <input type="button" value="Начать тесты" onClick={this.startTesting}/>;
+    runTest = (testNumToRun) => {
+        if (this.props.testNum === null || this.props.testNum === 100) {
+            this.props.dispatch(actions.runTest(testNumToRun));
+        }
     };
 
     renderResults = () => {
@@ -121,7 +102,7 @@ export default class TestingWithPerf extends React.Component {
             return (
                 <h4>
                     {
-                        this.props.testNum > 4 ?
+                        this.props.testNum === 100 ?
                         'Тестирование завершено! Результаты в консоли разработчика!'
                         :
                         'Выполняется тестирование!'

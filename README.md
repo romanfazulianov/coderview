@@ -1,6 +1,4 @@
-#My CoderView Site
-
-    git clone https://github.com/romanfazulianov/coderview.git
+    git clone https://github.com/romanfazulianov/react-test.git
     npm i -g concurrently webpack
     npm i
 
